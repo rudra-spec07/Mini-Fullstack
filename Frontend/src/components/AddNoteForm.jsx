@@ -28,35 +28,64 @@ function AddNoteForm({ onAdd }) {
   };
 
   return (
-    <form
-      onSubmit={submitHandler}
-      className="bg-white p-6 rounded-xl shadow-lg mb-8"
+  <form
+    onSubmit={submitHandler}
+    className="
+      max-w-2xl
+      mx-auto
+      bg-white/70
+      backdrop-blur-lg
+      p-6
+      rounded-3xl
+      shadow-xl
+      mb-10
+    "
+  >
+    <input
+      className="
+        w-full
+        border
+        p-4
+        mb-4
+        rounded-xl
+      "
+      placeholder="Note Title"
+      value={title}
+      onChange={(e) =>
+        setTitle(e.target.value)
+      }
+    />
+
+    <textarea
+      className="
+        w-full
+        border
+        p-4
+        mb-4
+        rounded-xl
+        h-32
+      "
+      placeholder="Write your note..."
+      value={content}
+      onChange={(e) =>
+        setContent(e.target.value)
+      }
+    />
+
+    <button
+      className="
+        bg-green-600
+        hover:bg-green-700
+        text-white
+        px-6
+        py-3
+        rounded-xl
+        transition
+      "
     >
-      <input
-        className="w-full border p-3 mb-3 rounded-lg"
-        placeholder="Note Title"
-        value={title}
-        onChange={(e) =>
-          setTitle(e.target.value)
-        }
-      />
-
-      <textarea
-        className="w-full border p-3 mb-3 rounded-lg"
-        placeholder="Write your note..."
-        value={content}
-        onChange={(e) =>
-          setContent(e.target.value)
-        }
-      />
-
-      <button
-        className="bg-green-600 text-white px-5 py-2 rounded-lg hover:scale-105 transition"
-      >
-        Add Note
-      </button>
-    </form>
-  );
-}
+      Add Note
+    </button>
+  </form>
+);}
 
 export default AddNoteForm;

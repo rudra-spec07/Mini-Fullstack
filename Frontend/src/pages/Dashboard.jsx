@@ -107,28 +107,36 @@ function Dashboard() {
     );
 
   return (
-    <div
-      className={`
+  <div
+    className={`
       min-h-screen
-      p-4 md:p-8
       transition-all
       duration-500
       ${themes[theme]}
     `}
+  >
+    <div
+      className="
+      max-w-7xl
+      mx-auto
+      px-4
+      md:px-8
+      py-6
+    "
     >
       {/* HEADER */}
 
       <div
-        className="
-        flex
-        flex-col
-        gap-4
-        md:flex-row
-        md:justify-between
-        md:items-center
-        mb-8
-      "
-      >
+  className="
+  flex
+  flex-col
+  md:flex-row
+  justify-between
+  items-center
+  gap-6
+  mb-10
+"
+>
         <div>
           <h1
             className="
@@ -192,22 +200,29 @@ function Dashboard() {
 
       {/* SEARCH */}
 
-      <input
-        type="text"
-        placeholder="Search notes..."
-        value={search}
-        onChange={(e) =>
-          setSearch(e.target.value)
-        }
-        className="
-        w-full
-        p-3
-        rounded-xl
-        border
-        mb-6
-        text-black
-      "
-      />
+      <div className="flex justify-center mb-10">
+  <input
+    type="text"
+    placeholder="🔍 Search notes..."
+    value={search}
+    onChange={(e) =>
+      setSearch(e.target.value)
+    }
+    className="
+      w-full
+      max-w-xl
+      p-4
+      rounded-2xl
+      shadow-lg
+      backdrop-blur-md
+      bg-white/70
+      border
+      focus:outline-none
+      focus:ring-2
+      focus:ring-orange-400
+    "
+  />
+</div>
 
       {/* ADD NOTE */}
 
@@ -230,14 +245,15 @@ function Dashboard() {
       {/* NOTES GRID */}
 
       <div
-        className="
-        grid
-        grid-cols-1
-        md:grid-cols-2
-        lg:grid-cols-3
-        gap-4
-      "
-      >
+  className="
+  mt-10
+  grid
+  grid-cols-1
+  sm:grid-cols-2
+  lg:grid-cols-3
+  gap-6
+"
+>
         <AnimatePresence>
           {filteredNotes.map(
             (note) => (
@@ -267,6 +283,7 @@ function Dashboard() {
           onUpdate={updateNote}
         />
       )}
+    </div>
     </div>
   );
 }
