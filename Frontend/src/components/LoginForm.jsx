@@ -37,7 +37,16 @@ function LoginForm() {
     <form onSubmit={submitHandler}>
 
       <input
-        className="w-full border p-3 mb-4 rounded"
+        className="
+                  w-full
+                  p-3
+                  mb-4
+                  rounded-xl
+                  border
+                  outline-none
+                  focus:ring-2
+                  focus:ring-blue-500
+                "
         placeholder="Username"
         value={username}
         onChange={(e) =>
@@ -47,7 +56,16 @@ function LoginForm() {
 
       <input
         type="password"
-        className="w-full border p-3 mb-4 rounded"
+        className="
+                    w-full
+                    p-3
+                    mb-4
+                    rounded-xl
+                    border
+                    outline-none
+                    focus:ring-2
+                    focus:ring-blue-500
+"
         placeholder="Password"
         value={password}
         onChange={(e) =>
@@ -56,10 +74,18 @@ function LoginForm() {
       />
 
       <button
-        className="w-full bg-blue-600 text-white p-3 rounded"
-      >
-        Login
-      </button>
+              className="
+              w-full
+              bg-blue-600
+              text-white
+              p-3
+              rounded-xl
+              hover:scale-105
+              transition
+            "
+>
+  Login
+</button>
 
     </form>
   );

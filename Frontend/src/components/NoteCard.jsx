@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 function NoteCard({
   note,
   onDelete,
+  onEdit,
 }) {
   return (
     <motion.div
@@ -19,12 +20,19 @@ function NoteCard({
         opacity: 0,
         scale: 0.7,
       }}
-      transition={{
-        duration: 0.3,
-      }}
-      className="bg-white p-4 rounded-xl shadow-lg"
+      className="
+      bg-white
+      p-5
+      rounded-2xl
+      shadow-lg
+      "
     >
-      <h2 className="font-bold text-xl">
+      <h2
+        className="
+        text-xl
+        font-bold
+        "
+      >
         {note.title}
       </h2>
 
@@ -32,14 +40,44 @@ function NoteCard({
         {note.content}
       </p>
 
-      <button
-        onClick={() =>
-          onDelete(note._id)
-        }
-        className="bg-red-500 text-white px-4 py-2 rounded hover:scale-105 transition"
+      <div
+        className="
+        flex
+        gap-2
+        "
       >
-        Delete
-      </button>
+        <button
+          onClick={() =>
+            onEdit(note)
+          }
+          className="
+          flex-1
+          bg-blue-600
+          text-white
+          py-2
+          rounded
+          "
+        >
+          Edit
+        </button>
+
+        <button
+          onClick={() =>
+            onDelete(
+              note._id
+            )
+          }
+          className="
+          flex-1
+          bg-red-500
+          text-white
+          py-2
+          rounded
+          "
+        >
+          Delete
+        </button>
+      </div>
     </motion.div>
   );
 }

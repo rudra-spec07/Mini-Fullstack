@@ -44,12 +44,19 @@ function RegisterForm() {
           setPassword(e.target.value)
         }
       />
-
-      <button
-        className="w-full bg-green-600 text-white p-3 rounded"
-      >
-        Register
-      </button>
+              <button
+                className="
+                w-full
+                bg-green-600
+                text-white
+                p-3
+                rounded-xl
+                hover:scale-105
+                transition
+              "
+              >
+                Register
+              </button>
 
     </form>
   );
