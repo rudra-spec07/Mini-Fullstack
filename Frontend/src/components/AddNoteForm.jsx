@@ -1,6 +1,8 @@
 import { useState } from "react";
-
+import { useTheme } from "../context/ThemeContext";
 function AddNoteForm({ onAdd }) {
+  const { theme } = useTheme();
+
   const [title, setTitle] =
     useState("");
 
@@ -42,13 +44,17 @@ function AddNoteForm({ onAdd }) {
     "
   >
     <input
-      className="
-        w-full
-        border
-        p-4
-        mb-4
-        rounded-xl
-      "
+      className={`
+w-full
+p-4
+rounded-2xl
+border
+${
+  theme === "hacker"
+    ? "bg-black border-green-500 text-green-400 placeholder:text-green-700"
+    : "bg-white"
+}
+`}
       placeholder="Note Title"
       value={title}
       onChange={(e) =>
@@ -57,14 +63,19 @@ function AddNoteForm({ onAdd }) {
     />
 
     <textarea
-      className="
+      className={`
         w-full
         border
         p-4
         mb-4
         rounded-xl
         h-32
-      "
+        ${
+          theme === "hacker"
+            ? "bg-black border-green-500 text-green-400 placeholder:text-green-700"
+            : "bg-white"
+        }
+      `}
       placeholder="Write your note..."
       value={content}
       onChange={(e) =>
@@ -73,13 +84,17 @@ function AddNoteForm({ onAdd }) {
     />
 
     <p
-  className="
-  text-sm
-  opacity-60
-  mb-4
-"
+  className={`
+    text-sm
+    mb-4
+    ${
+      theme === "hacker"
+  ? "text-lime-300"
+  : "text-gray-500"
+    }
+  `}
 >
-  {content.length} characters
+  [{content.length}] characters
 </p>
 
     <button

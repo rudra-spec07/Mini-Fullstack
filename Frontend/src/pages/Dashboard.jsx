@@ -226,26 +226,36 @@ setEditingNote(null);
 
       <div className="flex justify-center mb-10">
   <input
-    type="text"
-    placeholder="🔍 Search notes..."
-    value={search}
-    onChange={(e) =>
-      setSearch(e.target.value)
+  type="text"
+  placeholder="🔍 Search notes..."
+  value={search}
+  onChange={(e) =>
+    setSearch(e.target.value)
+  }
+  className={`
+    w-full
+    max-w-xl
+    p-4
+    rounded-2xl
+    shadow-lg
+    border
+    focus:outline-none
+    ${
+      theme === "hacker"
+        ? `
+          bg-[#001100]
+          border-green-500
+          text-green-400
+          placeholder:text-green-700
+        `
+        : `
+          bg-white/70
+          focus:ring-2
+          focus:ring-orange-400
+        `
     }
-    className="
-      w-full
-      max-w-xl
-      p-4
-      rounded-2xl
-      shadow-lg
-      backdrop-blur-md
-      bg-white/70
-      border
-      focus:outline-none
-      focus:ring-2
-      focus:ring-orange-400
-    "
-  />
+  `}
+/>
 </div>
 
       <div
