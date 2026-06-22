@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-
+import toast from "react-hot-toast";
 import API from "../api/axios";
 
 import AddNoteForm from "../components/AddNoteForm";
@@ -43,11 +43,17 @@ function Dashboard() {
   ) => {
     try {
       await API.post("/notes", {
-        title,
-        content,
-      });
+  title,
+  content,
+});
 
-      fetchNotes();
+toast.success(
+  "Note Created 🚀"
+);
+
+fetchNotes();
+
+    
     } catch (error) {
       console.log(error);
     }
@@ -55,9 +61,22 @@ function Dashboard() {
 
   const deleteNote = async (id) => {
     try {
-      await API.delete(`/notes/${id}`);
+      const confirmDelete =
+  window.confirm(
+    "Delete this note?"
+  );
 
-      fetchNotes();
+if (!confirmDelete) return;
+
+await API.delete(
+  `/notes/${id}`
+);
+
+toast.success(
+  "Note Deleted 🗑️"
+);
+
+fetchNotes();
     } catch (error) {
       console.log(error);
     }
@@ -69,12 +88,17 @@ function Dashboard() {
     content
   ) => {
     try {
-      await API.put(`/notes/${id}`, {
-        title,
-        content,
-      });
+     await API.put(`/notes/${id}`, {
+  title,
+  content,
+});
 
-      fetchNotes();
+toast.success(
+  "Note Updated ✨"
+);
+
+fetchNotes();
+setEditingNote(null);
     } catch (error) {
       console.log(error);
     }
@@ -271,6 +295,32 @@ function Dashboard() {
           )}
         </AnimatePresence>
       </div>
+
+      <button
+  onClick={() =>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+  className="
+    fixed
+    bottom-6
+    right-6
+    w-16
+    h-16
+    rounded-full
+    bg-green-600
+    text-white
+    text-4xl
+    shadow-xl
+    hover:scale-110
+    transition
+    z-50
+  "
+>
+  +
+</button>
 
       {/* EDIT MODAL */}
 
