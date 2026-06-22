@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 import API from "../api/axios";
-
+import StatsCard from "../components/StatsCard";
 import AddNoteForm from "../components/AddNoteForm";
 import NoteCard from "../components/NoteCard";
 import ThemeSwitcher from "../components/ThemeSwitcher";
@@ -248,6 +248,31 @@ setEditingNote(null);
   />
 </div>
 
+      <div
+  className="
+  grid
+  grid-cols-1
+  md:grid-cols-3
+  gap-4
+  mb-8
+"
+>
+  <StatsCard
+    title="Total Notes"
+    value={notes.length}
+  />
+
+  <StatsCard
+    title="Search Results"
+    value={filteredNotes.length}
+  />
+
+  <StatsCard
+    title="Theme"
+    value={theme}
+  />
+</div>
+
       {/* ADD NOTE */}
 
       <AddNoteForm onAdd={addNote} />
@@ -255,15 +280,21 @@ setEditingNote(null);
       {/* EMPTY STATE */}
 
       {filteredNotes.length === 0 && (
-        <div className="text-center py-20">
-          <h2 className="text-5xl">
-            📝
-          </h2>
+        <div className="text-center">
 
-          <p className="mt-4 text-xl">
-            No notes found
-          </p>
-        </div>
+  <h2 className="text-6xl">
+    📝
+  </h2>
+
+  <p className="mt-4 text-xl">
+    No Notes Yet
+  </p>
+
+  <p className="opacity-70">
+    Start building your second brain.
+  </p>
+
+</div>
       )}
 
       {/* NOTES GRID */}

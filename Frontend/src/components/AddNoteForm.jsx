@@ -72,6 +72,16 @@ function AddNoteForm({ onAdd }) {
       }
     />
 
+    <p
+  className="
+  text-sm
+  opacity-60
+  mb-4
+"
+>
+  {content.length} characters
+</p>
+
     <button
       className="
         bg-green-600
