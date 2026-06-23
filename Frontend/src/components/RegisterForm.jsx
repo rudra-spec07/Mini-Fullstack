@@ -14,7 +14,7 @@ function RegisterForm() {
         password,
       });
 
-      alert(res.data.message);
+      alert("Registration successful! You can now log in.");
 
       setUsername("");
       setPassword("");
